@@ -77,10 +77,16 @@
             text-shadow: 0 0 10px rgba(255, 0, 80, 0.7);
         }
 
+        /* letter paragraphs default white */
         p {
             color: #fff;
             font-size: 18px;
             line-height: 1.6;
+        }
+
+        /* Ensure strong/emphasis inside paragraphs stays white */
+        p strong, p b, .letter-content strong, .letter-content b {
+            color: #fff;
         }
 
         /* Inputs */
@@ -232,6 +238,74 @@
                 font-size: 70px;
             }
         }
+
+        /* Hug Section */
+        .hug-section {
+            margin-top: 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hug-gif {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Telugu paragraph */
+        .telugu-text {
+            margin-top: 15px;
+            font-size: 17px;
+            color: #fff;
+            font-weight: 500;
+            line-height: 1.8;
+            text-align: center;
+            text-shadow: 0 0 8px rgba(255, 77, 109, 0.6);
+        }
+
+        /* Song Section + button: ensure white text */
+        .song-section {
+            margin-top: 18px;
+            text-align: center;
+        }
+
+        .song-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #ff4d6d, #ff758f);
+            color: #fff;                    /* <-- make text white */
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        }
+
+        .song-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Also ensure visited/active states remain white */
+        .song-btn:visited,
+        .song-btn:active,
+        .song-btn:focus {
+            color: #fff;
+            outline: none;
+        }
+
+        /* If any anchor inside .letter-content should be white */
+        .letter-content a {
+            color: #fff;
+            text-decoration: none;
+        }
+
     </style>
 </head>
 
@@ -248,6 +322,8 @@
             h.style.animationDuration = (Math.random() * 3 + 4) + "s";
             document.body.appendChild(h);
         }
+        
+
     </script>
 
     <div class="box" id="box">
@@ -291,22 +367,51 @@
                     Thank you for always standing by me and supporting me with so much patience.
                     Your calmness and understanding mean more to me than words can express 💗
                     <br><br>
-                    <strong>Always stay happy, my love — and I promise I’ll do everything I can to make you even
-                        happier.
-                        Thank you for always putting your best efforts into our love and helping it grow stronger with
-                        every moment of our life together ❤️🫂
+                    <strong>Always stay happy, my love — and I promise I’ll do everything I can to make you even happier.
+                    Thank you for always putting your best efforts into our love and helping it grow stronger with every moment of our life together ❤️🫂
                     </strong><br><br>
-                    <strong>Now your task for today 😌💖:</strong><br>
+
+                    <p class="telugu-text">
+                    అప్పుడప్పుడూ అనుకుంటాను… చూడకుండా, మాట్లాడకుండా ఉంటూ ఒక మనిషిని ప్రేమించే పోటీ పెడితే  
+                    బహుశా నాకే ఫస్ట్ ప్రైజ్ వస్తుంది.  
+                    ఇలా కూడా ప్రేమించవచ్చా అని నాకే ఆశ్చర్యం వేస్తుంది 💖
+                    </p>
+                    <br><br>
+                    <strong>Now your task for today 😌💖:</strong><br> 
+                    <p>
                     Find the meaning of <strong>“HMM”</strong>,
                     because when we’re together, I need it every time 🫶😉
                     <br><br>
                     You are the best thing that has ever happened in my life,
                     and loving you is the best decision I have ever made ❤️😘🫂
+                    </p>
                 </p>
             </div>
-        </div>
 
-    </div>
+            <!-- Added Hug GIF -->
+            <div class="hug-section">
+                <img src="https://media.tenor.com/oQPT1dxDIVQAAAAC/anime-hug.gif"
+                     alt="Romantic Hug"
+                     class="hug-gif">
+            </div>
+
+            <!-- Romantic Song Button -->
+            <div class="song-section">
+            <p style="color:white; font-weight:600;">🎵 Here is my feeling 🎵</p>
+
+            <audio id="bgSong" controls style="width:100%;">
+                <source src="Valentine_song.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            </div>
+
+            <div>
+                <p> Add a note what you want to tell </p>
+                <a href="mailto:pendeladevaraj123@gmail.com?subject=From%20Your%20Love&body=Hi,%20send%20your%20feelings%20to%20your%20love">
+                    <button>Send your Feelings to Me</button>
+                </a>
+            </div>
+        </div>
 
     <script>
         const correctPassword = "247745";
@@ -328,6 +433,12 @@
         function openCard() {
             document.getElementById("envelope").style.display = "none";
             document.getElementById("card").style.display = "block";
+            const song = document.getElementById("bgSong");
+
+            song.play().catch(function(error) {
+                console.log("Autoplay prevented:", error);
+            });
+
         }
     </script>
 
